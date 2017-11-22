@@ -1,0 +1,10 @@
+<template name="formAuth">
+    <form>
+        <input type="user_email" name="user_email" placeholder="Entrez votre email">
+        <input type="user_mdp" name="user_mdp" placeholder="Entrez votre mot de passe">
+        <input type="submit">
+    </form>
+    <div>
+        {{> yield}}
+    </div>
+</template>
