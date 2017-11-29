@@ -1,4 +1,8 @@
 <template name="dashboard">
-        <p>You're logged in.</p>
-        <p><a href="#" class="logout">Logout</a></p>
+    {{#if currentUser}}
+
+    <p>You're logged in.</p>
+    <p><a href="#" class="logout">Logout</a></p>
+
+    {{/if}}
 </template>
