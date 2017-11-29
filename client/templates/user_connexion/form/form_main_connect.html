@@ -1,18 +1,18 @@
 <template name="formMainConnect">
     <div class="container">
+        {{#if currentUser}}
+            {{> dashboard}}
+        {{else}}
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                 <div class="login-container">
                     <div id="my-tab-content" class="tab-content">
-                        {{#if currentUser}}
-                            {{> dashboard}}
-                        {{else}}
-                            {{> formLogin}}
-                            {{> formRegister}}
-                        {{/if}}
+                        {{> formLogin}}
+                        {{> formRegister}}
                     </div>
                 </div>
             </div>
         </div>
+        {{/if}}
     </div>
 </template>
