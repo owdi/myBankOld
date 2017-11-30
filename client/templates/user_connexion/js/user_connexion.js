@@ -1,4 +1,5 @@
 if (Meteor.isClient) {
+
   Template.formRegister.events({
     'submit form': function (event) {
       event.preventDefault();
@@ -17,17 +18,15 @@ if (Meteor.isClient) {
       var userEmail = event.target.loginEmail.value;
       var userPassword = event.target.loginPassword.value;
 
-      Meteor.loginWithPassword(userEmail, userPassword, function (err) {
+      Meteor.loginWithPassword(userEmail, userPassword, function (error) {
 
-        if (err) {
+        if (error) {
           Bert.alert({
             message: 'Le mot de passe ou l\'email ne sont pas valides',
             type: 'danger'
           });
         }else{
-          console.log('toto');
-            Session.set('isConnected', true);
-            Router.go('/dashboard');
+            FlowRouter.go('dashboard');
         }
       });
     }
@@ -37,7 +36,21 @@ if (Meteor.isClient) {
   Template.dashboard.events({
     'click .logout': function (event) {
       event.preventDefault();
-      Meteor.logout();
+    
+
+      Meteor.logout(function(error){ 
+
+        if (!error) {
+
+          Bert.alert({
+            message: 'Vous avez bien été déconnecté',
+            type: 'info'
+          });
+
+          FlowRouter.go('homePage');
+        }
+      });
     }
   });
+  
 }
